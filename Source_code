@@ -1,0 +1,30 @@
+import random
+import math
+
+print("\t\t\t\t ***Number guessing game***")
+print("\tLet's start the game")
+lower=int(input("Give the lower bound of range- "))                        #lower bound of range
+upper=int(input('Give the upper bound of range- '))                        #upper bound of range
+print('\n\nGiven range is: --'+str(lower) +' to '+str(upper)+'--')
+comp=random.randint(lower,upper)                                           #computer taking random number
+#print(comp)
+chance=round(math.log(upper-lower+1,2))                                    #calculating minimum chances for guessing number
+print('You have only **'+str(chance)+'** chances for guessing the correct number and winning\n')
+replay='y'                                                                 
+while replay=='y':                                                         #loop for playing game again
+    count=1
+    while count<=chance:                                                   #loop for checking number of chances used
+        guess=int(input('Guess the number: '))
+        if guess==comp:
+            print('\n\tCongrats you did it in '+str(count)+'th chance')
+            break;
+        elif guess>comp:
+            print('Oops, you guessed very large')
+        else:
+            print('Oops, you picked very small')
+        count+=1    
+    if guess!=comp:
+        print('\n\tSorry, you missed the chances. Better luck next time.')
+    replay=input('\n\t\tWant to play again(Y/N)-- ').lower()
+    if replay=='n':
+        print('Thanks for coming...')
